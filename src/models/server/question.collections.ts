@@ -26,10 +26,14 @@ export default async function createQuestionCollection() {
 
     console.log("attributes added in question collection");
 
-    await Promise.all([
-      databases.createIndex(db, questionCollection, "title", IndexType.Fulltext, ["title"], ["asc"]),
-      databases.createIndex(db, questionCollection, "content", IndexType.Fulltext, ["content"], ["asc"]),
-    ]);
+    try {
+      await Promise.all([
+        databases.createIndex(db, questionCollection, "title", IndexType.Fulltext, ["title"], ["ASC"]),
+        databases.createIndex(db, questionCollection, "content", IndexType.Fulltext, ["content"], ["ASC"]),
+      ]);
+    } catch (error) {
+      console.log("Error Indexing Question collection: ", error)
+    }
 
     console.log("question collection indexed");
   } catch (error) {

@@ -19,7 +19,7 @@ export default async function createVoteCollection() {
     await Promise.all([
       databases.createEnumAttribute(db, voteCollection, "type", ["question", "answer"], true),
       databases.createStringAttribute(db, voteCollection, "typeId", 50, true),
-      databases.createEnumAttribute(db, voteCollection, "voteStatus", ["upvoted", "downVoted"], true),
+      databases.createEnumAttribute(db, voteCollection, "voteStatus", ["upVoted", "downVoted"], true),
       databases.createStringAttribute(db, voteCollection, "votedById", 50, false),
     ]);
 
